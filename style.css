@@ -1,0 +1,270 @@
+/* Global Reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+    background-color: blue;
+    color: #f7f6ff;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    min-height: 100vh;
+    padding: 2rem;
+    text-align: center;
+    background-image: linear-gradient(180deg, #11b8cf, #000879);
+}
+
+.hero .imgcontainer {
+    width: 220px;
+    max-width: 80%;
+    height: auto;
+}
+
+.moveX {
+    animation: moveX 1.5s linear;
+}
+
+@keyframes moveX {
+    0% { transform: translateX(-300%); }
+    100% { transform: translateX(0%); }
+}
+
+@keyframes fadeInY {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes wipe {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.hero .imgcontainer img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.spin {
+    animation: spin 2s ease-in-out;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.fade-up {
+    animation: fadeInY 1s ease-in-out both;
+    opacity: 0;
+}
+
+.hero-text {
+    max-width: 500px;
+}
+
+.hero-text h1 {
+    animation: wipe 1s ease-in-out both;
+    animation-delay: 250ms;
+    opacity: 0;
+}
+
+.hero-text p {
+    animation: fadeInY 2s ease-in-out both;
+    animation-delay: 1250ms;
+    opacity: 0;
+}
+
+.hero-text .divider {
+    width: 100%;
+    height: 0.1rem;
+    border: none;
+    background-color: #f7f6ff;
+    margin: 1rem 0;
+}
+
+/* Sections */
+section {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    min-height: 100vh;
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
+
+.contact-group {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.logocontainer {
+    border-radius: 50%;
+    height: 10vh;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #002763;
+    
+}
+
+.logocontainer img {
+    width: 60%;
+    height: auto;
+}
+
+.logocontainer:hover {
+    background-color: #007bff;
+}
+
+.section1 {
+    background-image: linear-gradient(180deg, #000879, #007bff);
+    flex-direction: row;
+}
+
+.section2 {
+    background-image: linear-gradient(180deg, #007bff, #115dcf);
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.section3 {
+    background-image: linear-gradient(180deg, #115dcf, #000879);
+    justify-content: space-evenly;
+    /* Defaults to flex-direction: row based on global section rules */
+}
+
+.section4 {
+    background-image: linear-gradient(180deg, #000879, #007bff);
+    flex-direction: column;
+    justify-content: center;
+}
+
+.section5 {
+    background-image: linear-gradient(180deg, #007bff, #115dcf);
+}
+
+#aboutme img{
+    border-radius: 50%;
+    max-width: 75%;
+}
+
+.aboutme-text {
+    max-width: 50vw;
+}
+
+.aboutme-text h2 {
+    opacity: 0;
+}
+
+.aboutme-text p {
+    animation-delay: 250ms;
+    opacity: 0;
+}
+
+.education-content h2 {
+    animation-delay: 250ms;
+    opacity: 0;
+}
+
+.education-content p {
+    animation-delay: 500ms;
+    opacity: 0;
+}
+
+/* =========================================
+   Responsive Breakpoints
+   ========================================= */
+
+/* Tablet */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 2rem 1rem;
+    }
+
+    .hero .imgcontainer {
+        width: 180px;
+    }
+
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+
+    /* Stack sections that were previously rows */
+    .section1,
+    .section3 {
+        flex-direction: column;
+        gap: 2rem; /* Adds breathing room between stacked items */
+    }
+
+    /* Expand text container so it doesn't get squished */
+    .aboutme-text {
+        max-width: 80vw;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .hero {
+        padding: 1.5rem 1rem;
+    }
+
+    .hero .imgcontainer {
+        width: 140px;
+    }
+
+    .hero-text h1 {
+        font-size: 1.6rem;
+    }
+
+    .hero-text p {
+        font-size: 0.95rem;
+    }
+
+    section {
+        padding: 2rem 1rem;
+    }
+
+    /* Let text take up full width on small screens */
+    .aboutme-text {
+        max-width: 100%;
+    }
+
+    /* Ensure gaps aren't too massive on small screens */
+    .contact-group {
+        gap: 1.5rem;
+    }
+
+    /* Switch from vh to a fixed size so it doesn't shrink awkwardly */
+    .logocontainer {
+        height: 70px; 
+    }
+}
